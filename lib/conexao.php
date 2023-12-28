@@ -1,6 +1,6 @@
 <?php 
 $host = "localhost";
-$db = "crud_clientes";
+$db = "oots";
 $user = "root";
 $password = "";
 

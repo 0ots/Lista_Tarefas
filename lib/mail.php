@@ -26,11 +26,11 @@ require 'vendor/autoload.php';
     $mail->Body = $mensagem;
 
     if($mail->send()){
-    echo "E-mail enviado com sucesso!!";
+    
     return true;
     }
     else{
-    echo "Falha ao enviar e-mail.";
+
     return false;
     }
 }

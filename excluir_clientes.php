@@ -1,13 +1,11 @@
-<?php 
+<?php
     if(isset($_POST['confirmar'])){
         include('lib/conexao.php');
         $id = $_GET['id'];
         $sql_code = "DELETE FROM clientes WHERE id = '$id'";
         $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
-        if($sql_query){ ?>
-            <h4>Cliente deletado com sucesso!</h1>
-            <p><a href="clientes.php">Voltar para a lista de clientes</a></p>
-        <?php 
+        if($sql_query){ 
+            header("location: cliente_excluido.php");
         die();    
         }
     }
@@ -17,16 +15,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Cadastrar Clientes</title>
 </head>
 <body>
-    <h1>Tem certeza que deseja excluir esse cliente?</h1>
     <form action="" method="POST">
-        <a href="clientes.php">
-            <button type="button" style="margin-right: 10px;">Não</button>
-        </a>
-        <button name="confirmar" value="1" type="submit">Sim</button>
+        <img src="imgs\assustador.png" alt="rosto_assutado">
+        <h1>Tem certeza que deseja excluir esse cliente?</h1>
+        <button onclick="voltarLista()" class="botaoVoltar3" type="button">Não</button>
+        <button class="botaoVoltar3" name="confirmar" value="1" type="submit">Sim</button>
     </form>
-        
+    <script src="js\script.js"></script>
 </body>
 </html>

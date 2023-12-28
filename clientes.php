@@ -9,7 +9,7 @@ $num_clientes = $query_clientes->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Lista de Clientes</title>
 </head>
 <body>
@@ -21,13 +21,13 @@ $num_clientes = $query_clientes->num_rows;
                 Id:
             </th>
             <th class="cabeca">
-                Imagem:
+                Título:
             </th>
             <th class="cabeca">
-                Nome:
+                Descrição:
             </th>
             <th class="cabeca">
-                E-mail:
+                Vencimento:
             </th>
             <th class="cabeca">
                 Telefone:
@@ -82,5 +82,6 @@ $num_clientes = $query_clientes->num_rows;
         } ?>
         </tbody>
     </table>
+    <script src="js\script.js"></script>
 </body>
 </html>

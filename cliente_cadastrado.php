@@ -1,3 +1,14 @@
+<?php 
+    include('lib/conexao.php');
+    include('lib/mail.php');
+    include('lib/upload.php');
+    if (isset($_GET['email'])) {
+        $email = urldecode($_GET['email']);    
+    } else {
+        $email = "default";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Login</title>
+    <title>Oots</title>
 </head>
 <body>
     <form enctype="multipart/form-data" action="" method="POST">
@@ -14,11 +25,14 @@
             Sucesso!
         </p>
         <div id="divLogin">
-            <P>
-                O cliente foi excluído com sucesso.
-            </P>
             <p>
-                <button onclick="voltarLista()" class="botaoVoltar3" type="button">Voltar</button>
+                O cliente foi adicionado com sucesso.
+            </p>
+            <p>
+                Enviamos um e-mail para <br><?php echo $email?><br>com as instruções de logon em nossa plataforma.
+            </p>
+            <p>
+                <button onclick="voltarLista()" id="botaoVoltar3" type="button">Voltar</button>
             </p>
         </div>
     </form>

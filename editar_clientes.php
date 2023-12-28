@@ -43,13 +43,6 @@ function limpar_texto($str){
                 $erro = "O telefone deve ser preenchido no padrão 11 11111-1111";
             }
         }
-        if(isset($_FILES['foto'])){
-            $arquivo = $_FILES['foto'];
-            $path = enviarArquivo($arquivo['error'], $arquivo['size'],$arquivo['name'], $arquivo['tmp_name']);
-            if($path == false){
-                $erro = "Falha ao enviar arquivo. Tente novamente.";
-            }
-        }
         if($erro) {
             echo $erro = "<p><b>$erro</b></p><br>";
         }
@@ -57,22 +50,6 @@ function limpar_texto($str){
             $senha = password_hash($senha_descriptografada = $_POST['senha'], PASSWORD_DEFAULT);
             $sql_code = "UPDATE clientes SET nome = '$nome', senha = '$senha', email = '$email', telefone = '$telefone', nascimento = '$nascimento', foto = '$path' where id = '$id'";
             $status = $mysqli->query($sql_code) or die($mysqli->error);
-            if($status){
-                enviar_email($email, "Sua conta foi atualizada com sucesso!","
-                <h1>Parabéns</h1><br>
-                <p>
-                Sua conta foi atualizada com sucesso!
-                </p><br>
-                <p>
-                <b>Login: $email </b><br>
-                <b>Senha: $senha_descriptografada</b>
-                </p><br>
-                <p>Para acessar o sistema, <a href='http://localhost/projeto'>clique aqui</a></p><br>
-                ");
-                echo "<p><b>Cliente atualizado com sucesso!<b></p>
-                <p><a href='clientes.php'>Voltar para a lista de clientes</a></p>";
-                die();
-            }
         }
     }
 ?>
@@ -82,42 +59,45 @@ function limpar_texto($str){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">    
     <title>Atualizar Clientes</title>
 </head>
 <body>
-    <a href="clientes.php">Voltar para a lista</a>
-    <form enctype="multipart/form-data" action="" method="POST">
-        <p>
-            <label for="">Nome</label>
-            <input class="teste" type="text" name="nome" value="<?php echo $cliente['nome'];?>">
-        </p>
-        <p>
-            <label for="">Senha</label>
-            <input class="teste" type="password" name="senha" placeholder="Inserir nova senha" value="">
-        </p>
-        <p>
-            <label for="">E-mail</label>
-            <input type="text" name="email" value="<?php echo $cliente['email']?>">
-        </p>
-        <p>
-            <label for="">Telefone</label>
-            <input type="text" name="telefone" value="<?php echo $cliente['telefone']?>">
-        </p>
-        <p>
-            <label for="">Data de Nascimento</label>
-            <input type="text" name="nascimento" value="<?php echo $nascimento_formatado?>">
-        </p>
-        <p>
-            <label for="">Foto Atual</label>
-            <img height="100" src="<?php echo $cliente['foto'];?>" alt="">
-        </p>
-        <p>
-            <label for="">Foto</label>
-            <input type="file" name="foto" value="">
-        </p>
-        <p>
-            <button id="botaoCadastrar" type="submit">Atualizar Cliente</button>
-        </p>
+    <form enctype="multipart/form-data" action="cliente_editado.php" method="POST">
+        <div id="divLogin">
+            <p>
+                <label for="txtNomeLogin"><i class="fas fa-user"></i></label>
+                <input class="teste" type="text" name="nome" value="<?php echo $cliente['nome'];?>">
+            </p>
+            <p>
+                <label for="txtSenhaLogin"><i class="fas fa-lock"></i></label>
+                <input class="teste" type="password" name="senha" placeholder="Inserir nova senha" value="">
+            </p>
+            <p>
+                <label for="txtNomeLogin"><i class="fas fa-envelope"></i></label>
+                <input type="text" name="email" value="<?php echo $cliente['email']?>">
+            </p>
+            <p>
+                <label for="txtNomeLogin"><i class="fas fa-phone"></i></label>
+                <input type="text" name="telefone" value="<?php echo $cliente['telefone']?>">
+            </p>
+            <p>
+                <label for="txtNomeLogin"><i class="fas fa-calendar"></i></label>
+                <input type="text" name="nascimento" value="<?php echo $nascimento_formatado?>">
+            </p>
+            <p>
+                <img height="100" src="<?php echo $cliente['foto'];?>" alt="">
+            </p>
+            <p>
+                <label for=""></label>
+                <input type="file" name="foto" value="">
+            </p>
+            <p>
+                <button id="botaoCadastrar" type="submit">Atualizar</button>
+                <button onclick="voltarLista()" id="botaoCadastrar" type="button">Voltar</button>
+            </p>
+        </div>
     </form>
+    <script src="js\scripts.js"></script>
 </body>
 </html>

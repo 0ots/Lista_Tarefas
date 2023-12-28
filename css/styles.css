@@ -24,65 +24,200 @@
 .links:hover{
     color: blue;
 }
-
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
-
-/* Estilo do formulário */
 form {
     max-width: 400px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
 }
-
-/* Estilo dos inputs e labels */
 label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
+    position: absolute;
+    left: 10px;
+    top: 40%;
+    transform: translateY(-60%);
 }
-
 input {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    text-align: center;
 }
-
 /* Estilo do botão */
-button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+#botaoLogar:hover{
+    filter: brightness(85%);
 }
-
 /* Estilo do link para voltar */
-a {
-    display: block;
-    margin-bottom: 20px;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
 /* Estilo do link ao passar o mouse */
+
+a {
+    color: black;
+}
 a:hover {
     text-decoration: underline;
+    cursor: pointer;
+}
+#txtNomeLogin{
+    text-align: center;
+    border-radius: 8px;
+}
+#txtSenhaLogin{
+    text-align: center;
+    border-radius: 8px;
+}
+
+#txtCadastrarNome{
+    text-align: center;
+    border-radius: 8px;
+}
+#botaoLogar {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    margin-top: -7px;
+    margin-bottom: 5px;
+}
+
+#botaoEntrar{
+    background-color:red !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    width: 90px !important;
+    height: 40px !important;
+}
+
+
+#divLogin button{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+}
+
+#divLogin button:hover{
+    filter: brightness(85%);
+}
+
+
+
+#botaoCadastrar{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    margin-top: 35px;
+    margin-bottom: 5px;
+}
+#botaoCadastrar:hover{
+    filter: brightness(85%);
+}
+#botaoVoltar1:hover{
+    filter: brightness(85%);
+}
+#botaoVoltar1{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    margin-top: -7px;
+    margin-bottom: 5px;
+}
+.botaoVoltar3{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    margin-top: 6px;
+    margin-bottom: 5px;
+}
+.botaoVoltar3:hover{
+    filter: brightness(85%);
+}
+#tituloLogin{
+    font-size: 30px;
+}
+#divLogin p {
+    margin: 10px 0;
+    position: relative;
+    text-align: center;
+}
+#cadastrarCliente{
+    font-size: 30px;
+}
+input[type="file"]{
+    display:none;
+}
+#lblFoto{
+    text-align: center;
+    width: 100%;
+    height: 35px; /* Ajustar a altura conforme necessário */
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 16px; /* Adicionado para espaçamento entre o rótulo e o próximo input */
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: -8px; /* Ajuste de posicionamento */
+    padding: 5px;
+}
+#lblFoto:hover{
+    filter: brightness(85%);
+}
+
+form #recuperarSenha {
+    font-size: 13px; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+.icons i {
+    margin-top: 8px;
+    font-size: 30px; /* Ajuste o tamanho conforme necessário */
+    margin-right: 10px; /* Espaçamento entre os ícones, ajuste conforme necessário */
+  }
+
+
+.toggle-password {  
+    position: absolute;
+    right: 10px;
+    top: 37%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
 }
