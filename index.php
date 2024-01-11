@@ -1,18 +1,13 @@
 <?php
-
 include('lib\conexao.php');
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "oots";
-
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-
     $conn = new mysqli($servername, $username, $password, $dbname);
-
     if ($conn->connect_error) {
         die("Erro na conexão: " . $conn->connect_error);
     }
@@ -33,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $conn->close();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
