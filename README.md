@@ -4,4 +4,4 @@ O projeto CRUD_Tasks tem como objetivo desenvolver minhas habilidades nas lingua
 
 Neste projeto, busco desenvolver uma plataforma de gerenciamento de tarefas, criando (Create), exibindo (Read), atualizando (Update) e excluindo (Delete) uma tarefa.<br>
 
-Além do nosso querido CRUD, um sistema de autenticação de login e envio de e-mails mediante a criação de uma conta também estão sendo desenvolvidos. 
+Além do nosso querido CRUD, um sistema de autenticação de login e envio de e-mails automático (PHPMailer) mediante a criação de uma conta também estão sendo desenvolvidos.
