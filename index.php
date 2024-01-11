@@ -16,8 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {
         die("Erro na conexão: " . $conn->connect_error);
     }
-
-    // Use instruções preparadas para evitar SQL injection
     $sql_code = "SELECT id FROM user WHERE email = '$email'";
     $result = $conn->query($sql_code);
 
@@ -29,17 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $usuarioId = $row['id'];
 
-        // Ou redirecionar para a página desejada
         header("Location: tarefas.php?id=" . $usuarioId);
     } else {
         echo "Login inválido.";
     }
-
     $conn->close();
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
