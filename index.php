@@ -30,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuarioId = $row['id'];
 
         // Ou redirecionar para a página desejada
-        header("Location: clientes.php?id=" . $usuarioId);
+        header("Location: tarefas.php?id=" . $usuarioId);
     } else {
-        echo "Deu ruim";
+        echo "Login inválido.";
     }
 
     $conn->close();
