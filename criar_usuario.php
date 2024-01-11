@@ -5,41 +5,40 @@ function limpar_texto($str){
     if(count($_POST) > 0){
         include('lib/conexao.php');
         include('lib/mail.php');
-        $erro = false;
+        $erro = "";
         $nome = $_POST['nome'];
         $senha_descriptografada = $_POST['senha'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
         $nascimento = $_POST['nascimento'];
         if(empty($nome)){
-            $erro = "Preencha o nome.";
+            $erro .= "Insira um nome de usuário <br>";
         }
         if(strlen($senha_descriptografada < 6 && $senha_descriptografada) > 16){
-            $erro = "A senha deve ter conter entre 6 e 16 caracteres";
+            $erro .= "A senha deve ter conter entre 6 e 16 caracteres <br>";
         }
         if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $erro = "Preencha um e-mail válido.";
+            $erro .= "Insira um e-mail válido <br>";
         }
         if(!empty($nascimento)){
             $pedacos = explode('/', $nascimento);
-            if (count($pedacos) == 3){
-                $nascimento = implode('-', array_reverse($pedacos));
-            } else {
-                echo "A data de nascimento deve seguir o padrão dia/mes/ano";
-            }
+            $nascimento = implode('-', array_reverse($pedacos));
+        }
+        if(empty($telefone)){
+            $erro .= "Insira um telefone <br>";
         }
         if(!empty($telefone)) {
             $telefone = limpar_texto($telefone);
             if(strlen($telefone) != 11){
-                $erro = "O telefone deve ser preenchido no padrão 11 11111-1111";
+                $erro .= "O telefone deve ser preenchido no padrão 11 11111-1111 <br>";
             }
         }
-        if($erro) {
-            echo $erro = "<p><b>$erro</b></p><br>";
+        if(!empty($erro)) {
+            $erro =  "<b>$erro</b>";
         }
         else{
             $senha = password_hash($senha_descriptografada = $_POST['senha'], PASSWORD_DEFAULT);
-            $sql_code = "INSERT INTO user (name, password, email, telefone, birth) VALUES('$nome', '$senha', '$email', '$telefone', '$nascimento')";
+            $sql_code = "INSERT INTO user (name, senha, email, telefone, birth) VALUES('$nome', '$senha', '$email', '$telefone', '$nascimento')";
             $status = $mysqli->query($sql_code) or die($mysqli->error);
             if($status){
                 enviar_email($email, "Sua conta foi criada com sucesso!","
@@ -54,7 +53,7 @@ function limpar_texto($str){
                 <p>Para acessar o sistema, <a href='http://localhost/projeto'>clique aqui</ap><br>
                 ");
                 unset($_POST);
-                header("location: usuario_cadastrado.php?email=$email");
+                header('location: usuario_criado.php');
             }
         }
     }
@@ -69,6 +68,15 @@ function limpar_texto($str){
     <title>Criar Conta</title>
 </head>
 <body>
+    <div class="msgErro">
+        <p>
+            <?php
+                if(!empty($erro)) { ?>
+                    <?php echo $erro;
+                }
+            ?>
+        </p>
+    </div>
     <form enctype="multipart/form-data" action="" method="POST">
         <img src="imgs\user.png" alt="userImage">
         <p id="tituloLogin">
@@ -93,7 +101,7 @@ function limpar_texto($str){
             </p>
             <p>
                 <label for="txtSenhaLogin"><i class="fas fa-calendar"></i></label>
-                <input id="txtSenhaLogin" type="date" name="nascimento" value="" placeholder="Insira sua data de nascimento" title="Insira sua data de nascimento">
+                <input id="txtSenhaLogin" type="date" name="nascimento" value="<?php if(isset($_POST['nascimento'])) echo $_POST['nascimento'];?>" placeholder="Insira sua data de nascimento" title="Insira sua data de nascimento">
             </p>
             <p>
                 <button id="botaoLogar" type="submit">Criar</button>

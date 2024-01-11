@@ -1,18 +1,9 @@
-<?php 
-    include('lib/conexao.php');
-    include('lib/mail.php');
-    if (isset($_GET['email'])) {
-        $email = urldecode($_GET['email']);    
-    } else {
-        $email = "default";
-    }
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Oots</title>
 </head>
@@ -27,13 +18,16 @@
                 Sua conta foi criada com sucesso.
             </p>
             <p>
-                Enviamos um e-mail para <br><?php echo $email?><br>com as instruções de logon em nossa plataforma.
+                Lhe enviamos um e-mail com algumas instruções.
             </p>
             <p>
-                <button onclick="voltarLista()" class="botaoVoltar3" type="button">Voltar</button>
+                Agradecemos seu cadastro.
+            </p>
+            <p>
+                <button onclick="voltarLogin()" class="botaoVoltar3" type="button">Voltar</button>
             </p>
         </div>
     </form>
-    <script src="js\scripts.js"></script>
+    <script src="js\script.js"></script>
 </body>
 </html>

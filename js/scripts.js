@@ -18,3 +18,6 @@ function togglePasswordVisibility() {
         eyeIcon.className = "fas fa-eye";
     }
 }
+function adicionarTarefa(){
+    location.replace("cadastrar_tarefas.php");
+}

@@ -58,12 +58,13 @@ input {
     border-radius: 6px;
     text-align: center;
 }
-/* Estilo do botão */
+
+input:hover{
+    /* nada a colocar */ 
+}
 #botaoLogar:hover{
     filter: brightness(85%);
 }
-/* Estilo do link para voltar */
-/* Estilo do link ao passar o mouse */
 
 a {
     color: black;
@@ -96,6 +97,38 @@ a:hover {
     height: 40px;
     margin-top: -7px;
     margin-bottom: 5px;
+}
+
+.botaoVoltar4{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    margin-top: -25px;
+    margin-bottom: 5px;
+}
+.botaoVoltar4:hover{
+    filter: brightness(85%);
+}
+
+.botaoVoltar5{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+.botaoVoltar5:hover{
+    filter: brightness(85%);
 }
 
 #botaoEntrar{
@@ -170,6 +203,25 @@ a:hover {
 .botaoVoltar3:hover{
     filter: brightness(85%);
 }
+.novaTarefa{
+    text-align: right;
+    margin-right: 3px;
+}
+#botaoNovaTarefa{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    margin-top: 6px;
+    margin-bottom: 5px;
+}
+#botaoNovaTarefa:hover{
+    filter: brightness(85%);
+}
 #tituloLogin{
     font-size: 30px;
 }
@@ -187,15 +239,15 @@ input[type="file"]{
 #lblFoto{
     text-align: center;
     width: 100%;
-    height: 35px; /* Ajustar a altura conforme necessário */
+    height: 35px; 
     background-color: black;
     color: white;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 16px; /* Adicionado para espaçamento entre o rótulo e o próximo input */
+    margin-bottom: 16px;
     display: inline-block;
     margin-top: 8px;
-    margin-left: -8px; /* Ajuste de posicionamento */
+    margin-left: -8px;
     padding: 5px;
 }
 #lblFoto:hover{
@@ -220,4 +272,21 @@ form #recuperarSenha {
     transform: translateY(-50%);
     cursor: pointer;
     font-size: 18px;
+}
+
+.msgErro{
+    text-align: center;
+}
+
+#tituloTarefas{
+    text-align: center;
+}
+
+.botaolink{
+    color: white;
+    text-decoration: none;
+}
+.botaolink:hover{
+    color: white;
+    text-decoration: none;
 }

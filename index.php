@@ -2,6 +2,42 @@
 
 include('lib\conexao.php');
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "oots";
+
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Erro na conexão: " . $conn->connect_error);
+    }
+
+    // Use instruções preparadas para evitar SQL injection
+    $sql_code = "SELECT id FROM user WHERE email = '$email'";
+    $result = $conn->query($sql_code);
+
+    if ($result === false) {
+        die("Erro na execução da consulta: " . $conn->error);
+    }
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $usuarioId = $row['id'];
+
+        // Ou redirecionar para a página desejada
+        header("Location: clientes.php?id=" . $usuarioId);
+    } else {
+        echo "Deu ruim";
+    }
+
+    $conn->close();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +59,7 @@ include('lib\conexao.php');
         <div id="divLogin">
             <p>
                 <label for="txtNomeLogin"><i class="fas fa-user"></i></label>
-                <input id="txtNomeLogin" type="text" name="nome" value="" placeholder="Insira seu usuário">
+                <input id="txtNomeLogin" type="text" name="email" value="" placeholder="Insira seu email">
             </p>
             <p>
             <label for="txtSenhaLogin"><i class="fas fa-lock"></i></label>
@@ -36,10 +72,10 @@ include('lib\conexao.php');
                 <button id="botaoLogar" type="submit">Entrar</button>
             </p>
             <p id="recuperarSenha">
-                Não tem uma conta? <a href="criar_usuario.php">Criar conta</a>
+                Não tem uma conta? <a href="criar_usuario.php">Clique aqui</a>
             </p>
             <p id="recuperarSenha">
-                Esqueceu sua senha? <a href="recuperar_senha.php">Recuperar senha</a>
+                Esqueceu sua senha? <a href="recuperar_senha.php">Clique aqui</a>
             </p>
             <p class="icons">
             <a href="" ><i class="fab fa-linkedin"></i></a>
@@ -47,6 +83,6 @@ include('lib\conexao.php');
             </p>
         </div>
     </form>
-    <script src="js\script.js"></script>
+    <script src="js\scripts.js"></script>
 </body>
 </html>
